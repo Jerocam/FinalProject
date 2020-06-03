@@ -301,6 +301,7 @@ function orderPizza () {
         }
     }
     
+    //FUNCTION BILL ADDRESS
     let billAddress = function () {
         "use strict";
 
@@ -412,6 +413,7 @@ function orderPizza () {
 
     }
 
+    // FUNCTION FOR COPYING THE ADDRESS ABOVE
     let sameAddress = function(){
         "use strict";
 
@@ -426,6 +428,7 @@ function orderPizza () {
         $('#inputZip2').val(info[7]);
     }
 
+    //FUNCTION FOR MATCHING CREDIT CARD TYPES
     let cardType = function (cardNumber) {
 
         let readType;
@@ -445,9 +448,10 @@ function orderPizza () {
         if (cardNumber.match(readType) != null)
             return "AMEX";
 
-        return "Other";
+        return "Other"  //OTHER TYPE;
     }
     
+    //FUNCTION TO VALID CREDIT CARD FIELDS
     let validCard = function (){
         "use strict";
         let newCredit = $('#inputCredit').val().trim();        
@@ -472,6 +476,7 @@ function orderPizza () {
             $('#crlbl span').next().text(msg).css('color', 'red');
             isValid = false }
         else {
+            //CREDIT CARD FORMAT AND VALID IT
             for (let i = creditNumb.length - 1; i >= 0; i--) {
                 let digit = parseInt(creditNumb.charAt(i));
                 if (checking) {
@@ -483,18 +488,18 @@ function orderPizza () {
                 checking =! checking;
             }
 
-            if ((sum % 10) == 0) {
+            if ((sum % 10) == 0) {  //TRUE
                     $('#crlbl span').next().text(done+ "- " +type).css('color', 'green');
                     $('#inputCredit').css("border", "1px solid green");
                 }
-            else {
+            else {  //FALSE
                 alert("Error! Invalid Credit Card");
                 isValid = false;
                 $('#crlbl span').next().text('Invalid').css("color", "red");
                 $('#inputCredit').focus().css("border", "1px solid red");}
         }
 
-        if (newCode==""){
+        if (newCode==""){   //CCV
             $('#inputCode').attr("required", true);
             $('#colbl span').next().text(msg).css('color', 'red');
             isValid = false; }
@@ -509,7 +514,7 @@ function orderPizza () {
             }
         }
 
-        if (newExp == 0){
+        if (newExp == 0){   //EXPIRATION DATE
             $('#inputExp').attr("required", true);
             $('#exlbl span').next().text(msg); 
             isValid = false; }
@@ -535,7 +540,7 @@ function orderPizza () {
             alert("INCOMPLETED FIELDS! Please enter your credit card fields");
             event.preventDefault();
         }
-        else {
+        else {  //FINAL SUBMIT OF THE LAST FORM
             alert("Approved! Thank you for ordering it")
             $("#billConfirm").submit();    
         }
@@ -561,6 +566,18 @@ $(document).ready(function () {
 
     //OPTIONAL - DISABLE CHECKBOX BEFORE CLICK RADIO SIZE BUTTON
     $('#pizza_toppings input[type="checkbox"]').attr('disabled', true);
+
+    $('#build').hide(); //OPTIONAL - HIDE UNTIL SUBMIT THE DELIVER INFO FORM
+
+    //BUTTON TO SUBMIT THE DELIVER INFO FORM
+    $("#submFields").click(function(e){
+        let isValid = newOrder.validateFields();
+        if(isValid[0]==true){ 
+            $('#build').show();
+            $('#pinfo input[type="text"], #pinfo select, #pinfo input[type="button"]').attr('disabled', true);
+            window.scrollTo(0, 500);   
+        }
+    });
     
     //RADIO BUTTONS TO CHANGE DIFFERENT PIZZAS SIZES BY HAND, THIN, GF AND NY
     $("#radSizes input:radio").change(function() {
@@ -573,23 +590,23 @@ $(document).ready(function () {
         
         let pizzaSizes = newOrder.loadSizes();  //TO LOAD DIFFERENT PIZZAS SIZES
 
-        if ($("input[title='hand']").is(':checked')){
+        if ($("input[title='hand']").is(':checked')){   //HAND TOSSED
             $('#selectSizes').html(pizzaSizes[0]);
             form.elements['sz_pizza'].value = $('#selectSizes').val();
             newOrder.updatePizzaTotal(form);
         }
-        else if ($("input[title='thin']").is(':checked')){
+        else if ($("input[title='thin']").is(':checked')){  //THIN CRUST
             $('#selectSizes').html(pizzaSizes[1]);
             form.elements['sz_pizza'].value = $('#selectSizes').val();
             newOrder.updatePizzaTotal(form);
         }
-        else if ($("input[title='ny']").is(':checked')){
+        else if ($("input[title='ny']").is(':checked')){    //NEW YORK STYLE
             $('#selectSizes').html(pizzaSizes[2]);
             form.elements['sz_pizza'].value = $('#selectSizes').val();
             newOrder.updatePizzaTotal(form);
         }
         else{
-            $('#selectSizes').html(pizzaSizes[3]);
+            $('#selectSizes').html(pizzaSizes[3]);  //GLUTEN FREE
             form.elements['sz_pizza'].value = $('#selectSizes').val();
             newOrder.updatePizzaTotal(form);
         }
@@ -655,18 +672,6 @@ $(document).ready(function () {
     $("#btnConfirm").click(function(e){
         newOrder.billAddress();
         newOrder.validCard();
-    });
-
-    $('#build').hide(); //OPTIONAL - HIDE UNTIL SUBMIT THE DELIVER INFO FORM
-
-    //BUTTON TO SUBMIT THE DELIVER INFO FORM
-    $("#submFields").click(function(e){
-        let isValid = newOrder.validateFields();
-        if(isValid[0]==true){ 
-            $('#build').show();
-            $('#pinfo input[type="text"], #pinfo select, #pinfo input[type="button"]').attr('disabled', true);
-            window.scrollTo(0, 500);   
-        }
     });
 
 });
