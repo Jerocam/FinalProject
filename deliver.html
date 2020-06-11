@@ -12,7 +12,7 @@
     <script src="js/pizzaForms.js"></script>
     <link rel="stylesheet" href="style/style.css">
 </head>
-<body>
+<body id="bd2">
     <div class="container">
         <!-- form personal info and pizza order -->
         <form id="pizzaForm" action=""> 
@@ -93,28 +93,28 @@
                                 <label class="d-block"><input type="radio" name="size" value="12" title='ny'/> New York Style</label>
                                 <label class="d-block"><input type="radio" name="size" value="12" title='gf'/> Gluten Free</label>
                             </div>
-                            <hr>
+                            <hr class="hr1">
                             <h5>Pizza Size Options</h5>
                             <div class="form-group">
                                 <select id="selectSizes" name="selectSizes">
                                 </select>
                                 <input type="hidden" id="sz_pizza" value="0.00" />
                             </div>
-                            <hr>
+                            <hr class="hr1">
                             <h5>Cheese Options</h5>
                             <div class="form-group">
                                 <select name="selectCheese" id="selectCheese">
                                 </select>
                                 <input type="hidden" id="op_cheese" value="0.00" />
                             </div>
-                            <hr>
+                            <hr class="hr1">
                             <h5>Sauce Options</h5>
                             <div class="form-group">
                                 <select name="selectSauce" id="selectSauce">
                                 </select>
                                 <input type="hidden" id="op_sauce" value="0.00" />
                             </div>
-                            <hr>
+                            <hr class="hr1">
                             <h5>Optional Toppings - Each $0.99</h5>
                             <div class="row" id="pizza_toppings">
                                 <div class="col-md-4" >
@@ -156,7 +156,7 @@
                     </div>
             </fieldset>
         </form>
-        <hr>
+        <hr id="fhr">
         <!-- form bill info -->
         <form id="billPizza" action="">
             <fieldset id="fs1">

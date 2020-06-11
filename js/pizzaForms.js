@@ -46,7 +46,7 @@ function orderPizza () {
     let loadStates = function (){
         "use strict";
 
-        $.getJSON('../data/listStates.json', function(result) {
+        $.getJSON("../data/listStates.json", function(result) {
             $.each(result, function() {
                 $.each(this, function(key, value) {
                     $("#inputState").append(
@@ -288,7 +288,7 @@ function orderPizza () {
                 if (accept) {
                     // $( "#pizzaForm" ).submit();
                     event.preventDefault();
-                    $('#billPizza').show();
+                    $('#billPizza, #fhr').show();
                     window.scrollTo(0, 1500);
                     $('#pizzaForm input, #pizzaForm select, #btnFinish').attr('disabled', true);
                 }
@@ -614,7 +614,7 @@ $(document).ready(function () {
 
     //LOAD STATES FOR PERSONAL AND BILL INFORMATION
     newOrder.loadStates();
-    
+
     //CLICK/ADD/REMOVE PIZZA TOPPINGS
     let topps = $('#pizza_toppings input');
     for (var i=0, len=topps.length; i<len; i++) {
@@ -666,7 +666,7 @@ $(document).ready(function () {
     });
     
     //HIDE THE FORM BILL PIZZA UNTIL CONFIRM THE PERSONAL INFO AND PIZZA ORDER
-    $('#billPizza').hide();
+    $('#billPizza, #fhr').hide();
     
     //BUTTON TO SUBMIT THE BILL FORM
     $("#btnConfirm").click(function(e){

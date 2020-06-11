@@ -1,5 +1,5 @@
 input:required, select:required, #radSizes input:required, #inputExp:required{
-    border: red 1px solid;
+    border: rgb(252, 148, 52) 1.5px solid;
     background-color: seashell;
 
 }
@@ -10,10 +10,6 @@ input:required, select:required, #radSizes input:required, #inputExp:required{
 
 .v span {
     color: green;
-}
-
-.lh {
-    border: 1px solid rgb(0, 0, 0);
 }
 
 fieldset {
@@ -35,6 +31,14 @@ input:read-only{
     font-size: 18px; 
 }
 
+hr {
+  border: rgb(252, 148, 52) 1px solid;
+}
+
+.hr1 {
+  border: rgb(71, 71, 71) 1px solid;
+}
+
 a,
 a:focus,
 a:hover {
@@ -53,7 +57,12 @@ a:hover {
 
 html,
 body {
-  height: 100%;background-color: #333;
+  height: 100%;
+  background-color: #333;
+}
+
+#bd2 {
+  height: 0%;
 }
 
 body {
