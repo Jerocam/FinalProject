@@ -473,7 +473,7 @@ function orderPizza () {
         
         if (newCredit==""){
             $('#inputCredit').attr("required", true);
-            $('#crlbl span').next().text(msg).css('color', 'red');
+            $('#crlbl span').next().text(msg).css('color', 'orange');
             isValid = false }
         else {
             //CREDIT CARD FORMAT AND VALID IT
@@ -495,18 +495,18 @@ function orderPizza () {
             else {  //FALSE
                 alert("Error! Invalid Credit Card");
                 isValid = false;
-                $('#crlbl span').next().text('Invalid').css("color", "red");
-                $('#inputCredit').focus().css("border", "1px solid red");}
+                $('#crlbl span').next().text('Invalid').css("color", "orange");
+                $('#inputCredit').focus().css("border", "1px solid orange");}
         }
 
         if (newCode==""){   //CCV
             $('#inputCode').attr("required", true);
-            $('#colbl span').next().text(msg).css('color', 'red');
+            $('#colbl span').next().text(msg).css('color', 'orange');
             isValid = false; }
         else {
             if (!newCodeFormat.test(newCode)){
                 alert("Invalid Input! Please enter your 3 or 4 code numbers");
-                $('#colbl span').next().text('Invalid').css('color', 'red');
+                $('#colbl span').next().text('Invalid').css('color', 'orange');
                 $('#inputCode').focus();
                 isValid = false;}
             else {  $('#inputCode').attr("required", false); 
@@ -521,7 +521,7 @@ function orderPizza () {
         else {
             if (afterToday < today){
                 alert("Invalid! It cannot be Today or less than Today");
-                $('#exlbl span').next().text('Invalid').css('color', 'red'); 
+                $('#exlbl span').next().text('Invalid').css('color', 'orange'); 
                 $('#inputExp').focus();
                 isValid = false;}
             else {  $('#inputExp').attr("required", false); 
